@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1><center><b>EXTENDED RAYTRACING</b></center></h1>
+<h2><center><b>CS184~HW6</b></center></h2>
+<h2><center><b>Jason Chen :: Andrew Chen</b></center></h2>
+<h2><center>cs184-ey :: cs184-ad</center></h2>
+
+
+<p>
+<b><font size="5">Links to Rendered Images</font></b>
+<li><a href="images/fallingOrbs.16.png">Falling Orbs ~ 16 samples</a></li>
+<li><a href="images/fallingOrbs.1.png">Falling Orbs ~ 1 sample</a></li>
+<li><a href="images/fallingOrbs2.13.png">Falling Orbs ~ 13 samples, alternate camera</a></li>
+<li><a href="images/fallingOrbs2.1.png">Falling Orbs ~ 1 sample, alternate camera</a></li>
+<li><a href="images/orbsStruct.10.png">Orb Structure ~ 10 samples</a></li>
+<li><a href="images/orbsStruct.1.png">Orb Structure ~ 1 sample</a></li>
+<li><a href="images/jadeDragon.13.png">Jade Dragon ~ 13 samples</a></li>
+<li><a href="images/jadeDragon.1.png">Jade Dragon ~ 1 sample</a></li>
+
+<br>
+<b><u><font size="5">Documentation</font></b></u>
+<ol>
+<li>Ray Tracer Features</li>
+<ul><b>Bounding Volume Hierarchy (BVH)</b> - Binary search tree. Each non-terminal node has at least either a left or right branch if not both. Terminal nodes are objects. Binary tree sorted by midpoint with respect to an "axis," that is to say, vector component (either x, y or z). The midpoint is incremented by 1 and mod 3 from one depth to the next.</ul>
+<ul><b>Refractions</b> - We used Schlick's approximation to compute the contributions of the reflective and refractive rays on a non-conducting surface.</ul>
+<ul><b>Anti-Aliasing</b> - To acheive anti-aliasing (reducing jaggies), we conceptually divided each pixel into a grid, and in each grid, we generated random samples as points on the viewing plane that we shoot our viewing rays. This method is known as jittered sampling. It ensures that the random samples are more or less evenly distributed. After we generate n^2 rays within a pixel, we average their colors together, and use the resulting color as the pixel's color.</ul>
+<ul><b>Depth of Field</b> - To acheive DOF, we first model the eye as an area, in our case, a square. Then, we used jittered sampling to acheive the same variation as in anti-aliasing. Therefore, in a sense, DOF is similar to anti-aliasing parts of the image vary too much from the camera's image plane.</ul>
+<ul><b>Soft Shadows</b> - To acheive soft shadows, we model the (point) light as an area rather than a point, and then jitter sample points within that area. The methodology is similar to anti-aliasing as well.</ul>
+
+<li>Image Descriptions</li>
+<ul>Each image is shown rendered both with only one sample (no AA, DOF, or soft shadows), as well as multiple samples. For each one, we chose a suitable lens size (square dimension) and focal distance to acheive our desired DOF. To measure DOF, we used the f-number or f-stop, the ratio of focal distance to lens diameter. F-stop essentially measures the aperture of a camera. The higher the f-number, the smaller the aperture, and the smaller the depth of field.</ul>
+<ul>In <a href="images/fallingOrbs.16.png">the first Falling Orbs</a></li>, we used an f-stop of f/9.48. We wanted the focus to be on the clear, completely reflective sphere at the center. What effect we hoped to acheive in this image is that of marbles dropping onto a somewhat elastic floor. Implementing motion blur would have enhanced the effect.</ul>
+<ul>In <a href="images/fallingOrbs2.13.png">the second Falling Orbs</a>, we used a different vantage point (not different enough!) so as to give a different perspective of the bouncing marbles. For this one, we used an f-stop of f/17.9.</ul>
+<ul>In <a href="images/orbsStruct.10.png">Orb Structures</a></li>, we wanted to demonstrate more clearly the refractive properties of the objects. The f-stop for this image is f/12.69.</ul>
+<ul>In <a href="images/jadeDragon.13.png">Jade Dragon</a>, we wanted to try to simulate a jade material without texturing. Clearly, a lot is left to be desired with texture.</ul>
+</ol>
+</p>
+
+</body>

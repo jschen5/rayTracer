@@ -1,0 +1,28 @@
+#size 1920 1080
+#size 1280 720
+#size 640 480 
+size 320 240
+
+output try.png
+
+point 0 10 0 0.2 0.8 0.8 0.8
+point 3 5 2 0.2 0.4 0.4 0.4
+#point 0 10 0 0.2 0.2 0.2 0.2
+
+ambient 0.6 0.6 0.6
+diffuse 0.2 0.2 0.2
+shininess 50
+emission 0 0 0
+specular .6 .6 .6
+
+antialias 1
+
+camera 0 5 0 0 0 0 0 1 0 50 0.3 4.25
+
+
+nt 1.4
+sphere 0 0 0 3
+
+nt 0
+sphere 0 0 0 1.5
+

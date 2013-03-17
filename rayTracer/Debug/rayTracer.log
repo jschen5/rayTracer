@@ -1,0 +1,17 @@
+﻿Build started 3/16/2013 8:55:16 PM.
+     1>Project "C:\Users\FLOW\Documents\Projects\tracer\rayTracer\rayTracer.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\rayTracer.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         rayTracer.vcxproj -> C:\Users\FLOW\Documents\Projects\tracer\Debug\rayTracer.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\rayTracer.unsuccessfulbuild".
+         Touching "Debug\rayTracer.lastbuildstate".
+     1>Done Building Project "C:\Users\FLOW\Documents\Projects\tracer\rayTracer\rayTracer.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.25

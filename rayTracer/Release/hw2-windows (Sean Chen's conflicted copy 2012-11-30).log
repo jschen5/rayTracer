@@ -1,0 +1,17 @@
+﻿Build started 11/30/2012 1:25:42 AM.
+     1>Project "C:\Users\Echidna\Dropbox\hw6\hw2-windows\hw2-windows.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\hw2-windows.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         hw2-windows.vcxproj -> C:\Users\Echidna\Dropbox\hw6\Release\hw2-windows.exe
+       FinalizeBuildStatus:
+         Deleting file "Release\hw2-windows.unsuccessfulbuild".
+         Touching "Release\hw2-windows.lastbuildstate".
+     1>Done Building Project "C:\Users\Echidna\Dropbox\hw6\hw2-windows\hw2-windows.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.11

@@ -1,0 +1,91 @@
+# Test Scene 1 
+# A simple quad viewed from different camera positions
+
+size 640 480 
+#size 200 200
+
+# Now specify the camera.  This is what you should implement.
+# This file has 4 camera positions.  Render your scene for all 4.
+
+#output scene1
+
+maxdepth 5
+
+#camera 0 0 1.5 0 0 0 0 1 0 30
+#camera 0 -3 3 0 0 0 0 1 0 30
+#camera -4 0 1 0 0 1 0 0 1 45
+#camera -4 -4 4 1 0 0 0 1 0 30
+
+camera 0 0 20 0 0 1 0 1 0 30 4 17
+#camera 0 0 3 0 0 0 0 1 0 30 0.0625 2
+#camera 0 0 7.5 0 0 0 0 1 0 30 1.25 5
+
+antialias 2
+
+# lighting/material definitions
+# for initial testing, you should get the geometry right
+# you may want to use dummy (constant) shading, ignoring these lines
+
+ambient 0.04 0.03 0.06
+#directional 0 0 1 .5 .5 .5 
+#directional 0 0 5 .5 .5 .5
+#directional -3 8 10 1 1 1
+#point -3 8 10 1 1 1
+#point 4 0 4 .5 .5 .5
+
+#correct lights
+#point 2 7 20 0 1 1 1
+point 1 2 10 0.2 1 1 1
+#point 0 0 20 0.2 1 1 1
+
+#diffuse 0.4 0 0
+specular 0.6 0.6 0.5
+shininess 2
+
+# Now specify the geometry 
+# Again, for initial testing, maybe you want to implement a dummy 
+# ray-plane intersection routine, instead of reading this fully.
+# Though it's probably simpler you just implement this, for later 
+# parts of the assignment.
+
+maxverts 4 
+
+vertex -1 -1 0 
+vertex +1 -1 0
+vertex +1 +1 0
+vertex -1 +1 0
+
+a 0.0 0.0 0.0
+nt 1.1
+
+#pushTransform
+#scale 2.0 2.0 1.0
+
+#tri 0 1 2
+#tri 0 2 3
+
+popTransform
+
+#ambient 0.0 0.3 0
+#diffuse 0 0.4 0
+#specular 0.2 0.5 0.1
+
+#pushTransform
+
+#translate -2.0 0.0 3.0
+#scale 3.0 3.0 0.0
+#tri 0 1 2
+#tri 0 2 3
+
+#popTransform
+#ambient 0.11 0.02 0.02
+specular 0.4 0.4 0.4
+sphere 0 0 3 1.4
+
+ambient 0 0 0.16
+specular 0.0 0.2 0.6
+sphere 2 0 -6 2
+
+ambient 0.1 0 0.02
+specular 0.03 0.05 0.03
+sphere -2 -1 6 1.3
