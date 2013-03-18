@@ -10,6 +10,7 @@ _material(&m),
 _p0(p0), _p1(p1),
 _isRefraction(false)
 {
+    refractTracker = new std::stack<GLfloat> ;
 }
 
 void RayRecord::updateNorm(glm::vec3 n) {
@@ -32,10 +33,9 @@ void RayRecord::updateIntersectedObj(Item * m) {
     _intersectedObj = m ;
 }
 
-void RayRecord::updateN(GLfloat N) {
-    _prevN = N ;
+void RayRecord::updatePrevObject(Item * m) {
+    _prevObject = m ;
 }
-
 
 glm::vec3 RayRecord::getNorm() {
     return _norm ;
@@ -57,6 +57,14 @@ Item * RayRecord::getIntersectedObj() {
     return _intersectedObj ;
 }
 
+Item * RayRecord::getPrevObj() {
+    return _prevObject ;
+}
+
+std::stack<GLfloat> * RayRecord::getRefractStack() {
+    return refractTracker ;
+}
+
 glm::vec3 RayRecord::getP0() {
     return _p0 ;
 }
@@ -64,12 +72,6 @@ glm::vec3 RayRecord::getP0() {
 glm::vec3 RayRecord::getP1() {
     return _p1 ;
 }
-
-GLfloat RayRecord::getPrevN() {
-    return _prevN ;
-}
-
-
 
 RayRecord::~RayRecord(void)
 {

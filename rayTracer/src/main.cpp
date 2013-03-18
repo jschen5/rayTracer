@@ -21,6 +21,8 @@
 #include "Triangle.h"
 #include "Sphere.h"
 
+#include <omp.h>
+
 #define INF std::numeric_limits<float>::infinity()
 #define nINF -1 * std::numeric_limits<float>::infinity()
 
@@ -42,6 +44,7 @@ void saveScreenshot(std::string fname, GLfloat * pixels, GLuint width, GLuint he
     int pix = width * height;
     RGBQUAD color ;
     FIBITMAP * img = FreeImage_Allocate(width, height, 24) ;
+
     for (int j = 0; j < height; j++) {
         for (int i = 0; i < width; i++) {
             color.rgbRed = pixels[j*width*3 + i*3] * 255 ;
@@ -74,9 +77,14 @@ int main(int argc, char* argv[]) {
 
     GLfloat * pxls = new GLfloat[width * height * 3] ;
 
+    int iCPU = omp_get_num_procs();
+    omp_set_num_threads(iCPU);
+
+    int i = 0;
+    #pragma omp parallel for private(i)
     for (int j = 0; j < height; j++) {
         std::cout << j << std::endl ;
-        for (int i = 0; i < width; i++) {
+        for (i = 0; i < width; i++) {
 
             glm::vec3 finalColor = vec3(0, 0, 0) ;
             RayRecord rec ;

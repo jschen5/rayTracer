@@ -107,7 +107,13 @@ bool bvhIsBlocked(RayRecord &originalIntersect, BVH bvh, Light * light, glm::vec
 
 bool refract(RayRecord &originalIntersect, glm::vec3 viewDir, glm::vec3 normal, GLfloat ref_index, RayRecord &t) {
     GLfloat ratio = 1 / (float) ref_index ;
-    //GLfloat ratio = originalIntersect.getPrevN() / (float) ref_index ;
+    /*
+    GLfloat ratio ;
+    if (originalIntersect.getIntersectedObj() == originalIntersect.getPrevObj()) {
+        originalIntersect.getRefractStack()->pop() ;
+        ratio = originalIntersect.getRefractStack()->top() / (float) ref_index ;
+    }
+    */
     GLfloat discriminant = 1 - ratio * ratio * (1 - glm::dot(viewDir, normal) * glm::dot(viewDir, normal)) ;
     if (discriminant < 0) {
         return false ;  //total internal reflection, all energy reflected
@@ -115,7 +121,6 @@ bool refract(RayRecord &originalIntersect, glm::vec3 viewDir, glm::vec3 normal, 
     glm::vec3 t_p0 = originalIntersect.getP0() + originalIntersect.getP1() * originalIntersect.getT() ;
     glm::vec3 t_p1 = ratio * (viewDir - normal * glm::dot(viewDir, normal)) - (normal * glm::sqrt(discriminant)) ;
     t = RayRecord(INF, *originalIntersect.getMaterial(), t_p0 + 0.0001f * t_p1, t_p1) ;
-    //t.updateN(
     t._isRefraction = true ;
     return true ;
 }

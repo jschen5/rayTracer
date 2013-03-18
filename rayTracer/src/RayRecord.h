@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Material.h"
+#include <stack>
 
 class Item;
 
@@ -20,7 +21,8 @@ private:
     glm::vec3 _p0, _p1 ;
     Material * _material ;
     Item * _intersectedObj ;
-    GLfloat _prevN ;
+    Item * _prevObject ;
+    std::stack<GLfloat> * refractTracker ;
 
 public:
 
@@ -33,16 +35,17 @@ public:
     void updateNorm(glm::vec3 n) ;
     void updateMaterial(Material &m) ;
     void updateIntersectedObj(Item * m) ;
-    void updateN(GLfloat N) ;
+    void updatePrevObject(Item * m) ;
 
     GLfloat getT() ;
     glm::vec3 getColor() ;
     glm::vec3 getNorm() ;
     Material * getMaterial() ;
     Item * getIntersectedObj() ;
+    Item * getPrevObj() ;
+    std::stack<GLfloat> * getRefractStack() ;
     glm::vec3 getP0() ;
     glm::vec3 getP1() ;
-    GLfloat getPrevN() ;
 
     ~RayRecord(void);
 };

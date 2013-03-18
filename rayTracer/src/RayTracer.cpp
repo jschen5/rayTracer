@@ -19,6 +19,9 @@ bool RayTracer::intersections(RayRecord &rec) {
     for (int objCount = 0; objCount < objects.size(); objCount++) {
         Item * obj = objects[objCount] ;
         if (obj->intersectionTest(rec, INF)) {
+            if (rec._isRefraction) {
+                rec.updatePrevObject(rec.getIntersectedObj());
+            }
             rec.updateIntersectedObj(obj) ;
             if (!existIntersect) { existIntersect = true ; }
         }
